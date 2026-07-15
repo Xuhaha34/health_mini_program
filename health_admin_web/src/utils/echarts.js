@@ -1,7 +1,7 @@
 // utils/echarts.js - ECharts 全局挂载
 import * as echarts from 'echarts'
 
-// 默认主题配置
+
 const defaultTheme = {
     color: ['#4CAF50', '#FF9800', '#2196F3', '#F44336', '#9C27B0'],
     title: {
@@ -36,7 +36,7 @@ export function initChart(dom, options) {
 }
 
 export default function setupEcharts() {
-    // 全局挂载，组件内通过 window.$echarts 使用
+
     window.$echarts = echarts
     window.initChart = initChart
 }
