@@ -1,0 +1,199 @@
+.mine-container {
+    padding: 24rpx 24rpx 48rpx;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.profile-card {
+    background: #ffffff;
+    border-radius: 32rpx;
+    padding: 40rpx 32rpx;
+    margin-bottom: 24rpx;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6rpx 28rpx rgba(15, 23, 42, 0.06);
+}
+.profile-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 200rpx;
+    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 50%, #81C784 100%);
+    z-index: 0;
+}
+.profile-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 0;
+}
+.profile-bg-circle-1 {
+    width: 180rpx;
+    height: 180rpx;
+    top: -60rpx;
+    right: 40rpx;
+}
+.profile-bg-circle-2 {
+    width: 120rpx;
+    height: 120rpx;
+    top: 40rpx;
+    right: -20rpx;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 24rpx;
+}
+.profile-avatar-wrap {
+    flex-shrink: 0;
+}
+.profile-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 30rpx;
+    background: #ffffff;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 54rpx;
+    font-weight: 700;
+    border: 6rpx solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.25);
+    text-transform: uppercase;
+}
+.profile-info {
+    flex: 1;
+    margin-left: 24rpx;
+    min-width: 0;
+}
+.profile-name {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6rpx;
+    letter-spacing: 1rpx;
+}
+.profile-desc {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 14rpx;
+}
+.profile-edit {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-radius: 24rpx;
+    padding: 12rpx 20rpx;
+    font-size: 24rpx;
+    font-weight: 500;
+    flex-shrink: 0;
+    border: 2rpx solid rgba(255, 255, 255, 0.4);
+}
+
+.stats-row {
+    display: flex;
+    align-items: center;
+    background: #F8FAFC;
+    border-radius: 20rpx;
+    padding: 28rpx 0;
+    margin-top: 40rpx;
+    position: relative;
+    z-index: 2;
+}
+.stats-cell {
+    flex: 1;
+    text-align: center;
+}
+.stats-num {
+    font-size: 38rpx;
+    font-weight: 700;
+    color: #1F2937;
+    line-height: 1.3;
+    margin-bottom: 6rpx;
+}
+.stats-label {
+    font-size: 24rpx;
+    color: #9CA3AF;
+    font-weight: 500;
+}
+.stats-divider {
+    width: 2rpx;
+    height: 60rpx;
+    background: #E2E8F0;
+}
+
+.menu-card {
+    padding: 0 24rpx;
+    margin-bottom: 24rpx;
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 28rpx 0;
+    border-bottom: 2rpx solid #F1F5F9;
+}
+.menu-item:last-child {
+    border-bottom: none;
+}
+.menu-item:active {
+    background: #F8FAFC;
+    margin: 0 -24rpx;
+    padding-left: 24rpx;
+    padding-right: 24rpx;
+    border-radius: 16rpx;
+}
+.menu-icon {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40rpx;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+.menu-icon-green { background: #E8F5E9; }
+.menu-icon-orange { background: #FFF3E0; }
+.menu-icon-blue { background: #E3F2FD; }
+.menu-icon-purple { background: #F3E5F5; }
+.menu-icon-gray { background: #F1F5F9; }
+.menu-text {
+    flex: 1;
+    min-width: 0;
+}
+.menu-title {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 4rpx;
+}
+.menu-subtitle {
+    font-size: 24rpx;
+    color: #9CA3AF;
+}
+.menu-arrow {
+    font-size: 36rpx;
+    color: #CBD5E1;
+    font-weight: 300;
+}
+
+.btn-logout {
+    width: 100%;
+    background: #ffffff;
+    color: #EF4444;
+    border-radius: 24rpx;
+    padding: 28rpx 0;
+    font-size: 30rpx;
+    font-weight: 600;
+    margin-top: 24rpx;
+    box-shadow: 0 2rpx 12rpx rgba(15, 23, 42, 0.04);
+    border: none;
+}
+.btn-logout::after { border: none; }
+.btn-logout:active {
+    background: #FFEBEE;
+}

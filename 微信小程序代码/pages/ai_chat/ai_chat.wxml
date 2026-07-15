@@ -1,0 +1,82 @@
+<view class="chat-container">
+
+    <view class="chat-header">
+        <view class="header-left" bindtap="toggleSidebar">
+            <view class="header-icon-btn">☰</view>
+        </view>
+        <view class="header-center">
+            <view class="chat-header-title">{{currentSession ? currentSession.title : 'AI健康问答'}}</view>
+            <view class="chat-header-status" wx:if="{{aiConfig}}">
+                <view class="status-dot"></view>
+                <text class="status-text">{{aiConfig.provider_name || 'AI助手'}}</text>
+            </view>
+        </view>
+        <view class="header-right" bindtap="newChat">
+            <view class="header-icon-btn">＋</view>
+        </view>
+    </view>
+
+    <view class="sidebar" wx:if="{{showSidebar}}" catchtap="toggleSidebar">
+        <view class="sidebar-mask"></view>
+        <view class="sidebar-content" catchtap="">
+            <view class="sidebar-header">📚 历史对话</view>
+            <scroll-view scroll-y class="session-list" style="max-height: 80vh;">
+                <view class="session-item" wx:for="{{sessions}}" wx:key="id"
+                      data-id="{{item.id}}" catchtap="selectSession">
+                    <view class="session-item-title">{{item.title}}</view>
+                    <text class="session-item-delete" catchtap="deleteSession" data-id="{{item.id}}">删除</text>
+                </view>
+            </scroll-view>
+            <view wx:if="{{sessions.length === 0}}" class="sidebar-empty">暂无历史对话</view>
+        </view>
+    </view>
+
+    <scroll-view scroll-y class="messages-container" scroll-into-view="msg-bottom">
+
+        <view wx:if="{{messages.length === 0}}" class="chat-empty">
+            <view class="chat-empty-icon">🤖</view>
+            <view class="chat-empty-title">我是你的健康助手</view>
+            <view class="chat-empty-desc">可以问我饮食、运动、养生等问题</view>
+            <view class="chat-empty-suggest">
+                <view class="suggest-item" data-text="每天运动多久合适？" catchtap="onSuggestTap">💪 每天运动多久合适？</view>
+                <view class="suggest-item" data-text="健康饮食怎么搭配？" catchtap="onSuggestTap">🍎 健康饮食怎么搭配？</view>
+                <view class="suggest-item" data-text="如何改善睡眠？" catchtap="onSuggestTap">😴 如何改善睡眠？</view>
+                <view class="suggest-item" data-text="高血压应该注意什么？" catchtap="onSuggestTap">💊 高血压应该注意什么？</view>
+            </view>
+        </view>
+
+        <view wx:for="{{messages}}" wx:key="index" class="msg-wrapper">
+            <view class="msg {{item.role === 'user' ? 'msg-right' : 'msg-left'}}">
+                <view class="msg-avatar" wx:if="{{item.role !== 'user'}}">🤖</view>
+                <view class="msg-bubble {{item.role === 'user' ? 'bubble-right' : 'bubble-left'}}">
+                    {{item.content}}
+                </view>
+                <view class="msg-avatar msg-avatar-user" wx:if="{{item.role === 'user'}}">👤</view>
+            </view>
+            <view class="msg-meta" wx:if="{{item.role !== 'user' && item.provider}}">
+                <text class="msg-meta-text">{{item.from_external ? 'AI · ' : '知识库 · '}}{{item.provider}}</text>
+            </view>
+        </view>
+
+        <view class="msg-wrapper" wx:if="{{isLoading}}">
+            <view class="msg msg-left">
+                <view class="msg-avatar">🤖</view>
+                <view class="msg-bubble bubble-left typing-bubble">
+                    <text class="typing-dot">●</text>
+                    <text class="typing-dot typing-dot-2">●</text>
+                    <text class="typing-dot typing-dot-3">●</text>
+                </view>
+            </view>
+        </view>
+
+        <view id="msg-bottom"></view>
+    </scroll-view>
+
+    <view class="input-bar">
+        <input class="chat-input" placeholder="输入健康问题..." value="{{inputText}}" bindinput="onInput"
+               confirm-type="send" bindconfirm="sendMessage" disabled="{{isLoading}}"/>
+        <button class="btn-send {{isLoading ? 'btn-send-disabled' : ''}}" bindtap="sendMessage">
+            {{isLoading ? '思考中' : '发送'}}
+        </button>
+    </view>
+</view>

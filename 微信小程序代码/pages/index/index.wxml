@@ -1,0 +1,106 @@
+<view class="container">
+
+    <view class="hero-card">
+        <view class="hero-bg-1"></view>
+        <view class="hero-bg-2"></view>
+        <view class="hero-content">
+            <view class="hero-greeting">Hi, {{userInfo.nickname || userInfo.username || '健康达人'}} 👋</view>
+            <view class="hero-slogan">每天进步一点点，健康生活从现在开始</view>
+            <view class="hero-tags">
+                <view class="hero-tag">✨ 记录体征</view>
+                <view class="hero-tag">🍎 健康饮食</view>
+                <view class="hero-tag">🏃 运动打卡</view>
+            </view>
+        </view>
+        <view class="hero-avatar">
+            <text class="hero-avatar-icon">💪</text>
+        </view>
+    </view>
+
+    <view class="stats-card">
+        <view class="stats-header">
+            <view class="stats-title">健康概览</view>
+            <view class="stats-sub">近 7 天</view>
+        </view>
+        <view class="stats-grid">
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-green">⚖️</view>
+                <view class="stat-value">{{todayStats.weight || '—'}}</view>
+                <view class="stat-label">体重 kg</view>
+            </view>
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-orange">🔥</view>
+                <view class="stat-value">{{todayStats.calories_in || '0'}}</view>
+                <view class="stat-label">摄入热量</view>
+            </view>
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-blue">💧</view>
+                <view class="stat-value">{{todayStats.calories_out || '0'}}</view>
+                <view class="stat-label">消耗热量</view>
+            </view>
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-red">❤️</view>
+                <view class="stat-value">{{todayStats.heart_rate || '—'}}</view>
+                <view class="stat-label">心率</view>
+            </view>
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-purple">💊</view>
+                <view class="stat-value">{{todayStats.blood_pressure || '—'}}</view>
+                <view class="stat-label">血压</view>
+            </view>
+            <view class="stat-item">
+                <view class="stat-icon-box stat-bg-cyan">🏃</view>
+                <view class="stat-value">{{todayStats.exercise_minutes || '0'}}</view>
+                <view class="stat-label">运动分</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="quick-entry-card">
+        <view class="quick-entry-title">快捷记录</view>
+        <view class="quick-entry-grid">
+            <view class="quick-entry-item" data-url="/pages/body_data/body_data" bindtap="onQuickEntry">
+                <view class="quick-icon quick-icon-green">📊</view>
+                <view class="quick-text">体征记录</view>
+            </view>
+            <view class="quick-entry-item" data-url="/pages/diet/diet" bindtap="onQuickEntry">
+                <view class="quick-icon quick-icon-orange">🍽️</view>
+                <view class="quick-text">饮食记录</view>
+            </view>
+            <view class="quick-entry-item" data-url="/pages/sport/sport" bindtap="onQuickEntry">
+                <view class="quick-icon quick-icon-blue">🏃</view>
+                <view class="quick-text">运动记录</view>
+            </view>
+            <view class="quick-entry-item" data-url="/pages/health_plan/health_plan" bindtap="onQuickEntry">
+                <view class="quick-icon quick-icon-purple">📋</view>
+                <view class="quick-text">健康计划</view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{recentBodyData.length > 0}}">
+        <view class="section-title">近期体征</view>
+        <view class="timeline-card" wx:for="{{recentBodyData}}" wx:key="id">
+            <view class="timeline-date-box">
+                <view class="timeline-date">{{item.record_date}}</view>
+            </view>
+            <view class="timeline-divider"></view>
+            <view class="timeline-info">
+                <view class="timeline-tags">
+                    <text class="tag tag-green" wx:if="{{item.weight}}">体重 {{item.weight}}kg</text>
+                    <text class="tag tag-purple" wx:if="{{item.blood_pressure_systolic}}">血压 {{item.blood_pressure_systolic}}/{{item.blood_pressure_diastolic}}</text>
+                    <text class="tag tag-red" wx:if="{{item.heart_rate}}">心率 {{item.heart_rate}}</text>
+                    <text class="tag tag-blue" wx:if="{{item.blood_sugar}}">血糖 {{item.blood_sugar}}</text>
+                    <text class="tag tag-orange" wx:if="{{item.temperature}}">体温 {{item.temperature}}℃</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{recentBodyData.length === 0}}" class="empty-state">
+        <view class="empty-state-icon">📋</view>
+        <view class="empty-state-title">暂无体征记录</view>
+        <view class="empty-state-desc">快去记录你的健康数据吧</view>
+    </view>
+
+</view>

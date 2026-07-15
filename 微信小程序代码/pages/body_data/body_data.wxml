@@ -1,0 +1,135 @@
+<view class="container">
+
+    <view class="header-card">
+        <view class="header-left">
+            <view class="header-title">体征记录</view>
+            <view class="header-sub">共 {{records.length}} 条记录 · 坚持健康记录</view>
+        </view>
+        <button class="btn-header-add" bindtap="showAddForm">
+            <text class="btn-header-icon">＋</text>新增
+        </button>
+    </view>
+
+    <view wx:if="{{records.length > 0}}">
+        <view class="card record-card" wx:for="{{records}}" wx:key="id">
+            <view class="record-header">
+                <view class="record-date">
+                    <text class="date-icon">📅</text>
+                    <text class="date-text">{{item.record_date}}</text>
+                </view>
+                <view class="record-actions">
+                    <text class="action-btn" data-item="{{item}}" bindtap="editRecord">编辑</text>
+                    <text class="action-btn action-delete" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+                </view>
+            </view>
+
+            <view class="record-grid">
+                <view class="record-item" wx:if="{{item.weight}}">
+                    <view class="record-item-icon">⚖️</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.weight}} <text class="record-item-unit">kg</text></view>
+                        <view class="record-item-label">体重</view>
+                    </view>
+                </view>
+                <view class="record-item" wx:if="{{item.height}}">
+                    <view class="record-item-icon">📏</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.height}} <text class="record-item-unit">cm</text></view>
+                        <view class="record-item-label">身高</view>
+                    </view>
+                </view>
+                <view class="record-item" wx:if="{{item.blood_pressure_systolic}}">
+                    <view class="record-item-icon">💊</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.blood_pressure_systolic}}/{{item.blood_pressure_diastolic}}</view>
+                        <view class="record-item-label">血压 mmHg</view>
+                    </view>
+                </view>
+                <view class="record-item" wx:if="{{item.heart_rate}}">
+                    <view class="record-item-icon">❤️</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.heart_rate}} <text class="record-item-unit">次/分</text></view>
+                        <view class="record-item-label">心率</view>
+                    </view>
+                </view>
+                <view class="record-item" wx:if="{{item.blood_sugar}}">
+                    <view class="record-item-icon">🍬</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.blood_sugar}}</view>
+                        <view class="record-item-label">血糖</view>
+                    </view>
+                </view>
+                <view class="record-item" wx:if="{{item.temperature}}">
+                    <view class="record-item-icon">🌡️</view>
+                    <view class="record-item-content">
+                        <view class="record-item-value">{{item.temperature}} <text class="record-item-unit">℃</text></view>
+                        <view class="record-item-label">体温</view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="record-remark" wx:if="{{item.remark}}">
+                <text class="remark-icon">💬</text>
+                <text class="remark-text">{{item.remark}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{records.length === 0}}" class="empty-state">
+        <view class="empty-state-icon">📋</view>
+        <view class="empty-state-title">暂无体征记录</view>
+        <view class="empty-state-desc">点击上方按钮开始记录你的健康数据</view>
+    </view>
+
+    <view class="modal" wx:if="{{showForm}}" catchtap="hideForm">
+        <view class="modal-content" catchtap="">
+            <view class="modal-header">
+                <view class="modal-title">{{editId ? '编辑体征' : '新增体征'}}</view>
+                <text class="modal-close" bindtap="hideForm">✕</text>
+            </view>
+
+            <view class="modal-form">
+                <view class="form-field">
+                    <text class="form-label">📅 日期</text>
+                    <picker mode="date" value="{{form.record_date}}" bindchange="onDateChange">
+                        <view class="picker-box">{{form.record_date}} <text class="picker-arrow">›</text></view>
+                    </picker>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">⚖️ 体重(kg)</text>
+                    <input type="digit" placeholder="请输入体重" value="{{form.weight}}" data-field="weight" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">📏 身高(cm)</text>
+                    <input type="digit" placeholder="请输入身高" value="{{form.height}}" data-field="height" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">💊 收缩压(mmHg)</text>
+                    <input type="number" placeholder="请输入" value="{{form.blood_pressure_systolic}}" data-field="blood_pressure_systolic" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">💊 舒张压(mmHg)</text>
+                    <input type="number" placeholder="请输入" value="{{form.blood_pressure_diastolic}}" data-field="blood_pressure_diastolic" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">❤️ 心率(次/分)</text>
+                    <input type="number" placeholder="请输入" value="{{form.heart_rate}}" data-field="heart_rate" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">🍬 血糖(mmol/L)</text>
+                    <input type="digit" placeholder="请输入" value="{{form.blood_sugar}}" data-field="blood_sugar" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">🌡️ 体温(℃)</text>
+                    <input type="digit" placeholder="请输入" value="{{form.temperature}}" data-field="temperature" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">💬 备注</text>
+                    <input placeholder="选填，写下今天的状态..." value="{{form.remark}}" data-field="remark" bindinput="onFormInput" class="form-input"/>
+                </view>
+            </view>
+
+            <button class="btn-primary btn-modal" bindtap="saveRecord">保 存</button>
+        </view>
+    </view>
+</view>

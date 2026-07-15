@@ -1,0 +1,48 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+        "pages/body_data/body_data",
+        "pages/diet/diet",
+        "pages/sport/sport",
+        "pages/news/news",
+        "pages/news_detail/news_detail",
+        "pages/health_plan/health_plan",
+        "pages/ai_chat/ai_chat",
+        "pages/mine/mine",
+        "pages/profile_edit/profile_edit"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#4CAF50",
+        "navigationBarTitleText": "个人健康管理",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F5F7FA"
+    },
+    "tabBar": {
+        "color": "#8B95A7",
+        "selectedColor": "#4CAF50",
+        "backgroundColor": "#FFFFFF",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/news/news",
+                "text": "资讯"
+            },
+            {
+                "pagePath": "pages/ai_chat/ai_chat",
+                "text": "AI助手"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "style": "v2"
+}

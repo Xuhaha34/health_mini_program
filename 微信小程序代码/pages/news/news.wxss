@@ -1,0 +1,113 @@
+.search-card {
+    margin-bottom: 20rpx;
+}
+.search-box {
+    background: #ffffff;
+    border-radius: 24rpx;
+    padding: 20rpx 28rpx;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2rpx 12rpx rgba(15, 23, 42, 0.04);
+}
+.search-icon {
+    font-size: 32rpx;
+    margin-right: 16rpx;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+.search-input {
+    flex: 1;
+    font-size: 28rpx;
+    color: #1F2937;
+}
+
+.category-scroll {
+    margin-bottom: 20rpx;
+    white-space: nowrap;
+    display: block;
+}
+.cat-list {
+    display: inline-flex;
+    padding: 8rpx 24rpx 8rpx 8rpx;
+}
+.cat-tag {
+    display: inline-block;
+    background: #ffffff;
+    color: #475569;
+    padding: 14rpx 32rpx;
+    border-radius: 30rpx;
+    font-size: 26rpx;
+    font-weight: 500;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+    box-shadow: 0 2rpx 8rpx rgba(15, 23, 42, 0.03);
+    transition: all 0.2s;
+}
+.cat-tag.cat-active {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: #ffffff;
+    box-shadow: 0 4rpx 16rpx rgba(76, 175, 80, 0.25);
+    font-weight: 700;
+}
+
+.article-card {
+    background: #ffffff;
+    border-radius: 24rpx;
+    padding: 24rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    box-shadow: 0 2rpx 16rpx rgba(15, 23, 42, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.article-card:active {
+    transform: translateY(2rpx);
+    box-shadow: 0 2rpx 8rpx rgba(15, 23, 42, 0.04);
+}
+.article-cover {
+    width: 200rpx;
+    height: 160rpx;
+    border-radius: 18rpx;
+    margin-right: 24rpx;
+    flex-shrink: 0;
+    background: #F1F5F9;
+}
+.article-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.article-title {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #1F2937;
+    line-height: 1.4;
+    margin-bottom: 10rpx;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.article-summary {
+    font-size: 24rpx;
+    color: #6B7280;
+    line-height: 1.5;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.article-meta {
+    display: flex;
+    align-items: center;
+    margin-top: 12rpx;
+    font-size: 22rpx;
+    color: #9CA3AF;
+}
+.meta-item {
+    font-weight: 500;
+}
+.meta-dot {
+    margin: 0 10rpx;
+}

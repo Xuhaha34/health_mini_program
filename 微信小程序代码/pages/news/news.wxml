@@ -1,0 +1,41 @@
+<view class="container">
+
+    <view class="search-card">
+        <view class="search-box">
+            <text class="search-icon">🔍</text>
+            <input class="search-input" placeholder="搜索健康资讯" value="{{keyword}}" bindinput="onSearchInput" />
+        </view>
+    </view>
+
+    <scroll-view scroll-x class="category-scroll" style="white-space: nowrap;">
+        <view class="cat-list">
+            <view class="cat-tag {{currentCategory === '' ? 'cat-active' : ''}}"
+                  data-id="" bindtap="onCategoryTap">全部</view>
+            <view class="cat-tag {{currentCategory === item.id ? 'cat-active' : ''}}"
+                  wx:for="{{categories}}" wx:key="id"
+                  data-id="{{item.id}}" bindtap="onCategoryTap">{{item.name}}</view>
+        </view>
+    </scroll-view>
+
+    <view wx:if="{{articles.length > 0}}">
+        <view class="article-card" wx:for="{{articles}}" wx:key="id"
+              data-id="{{item.id}}" bindtap="onArticleTap">
+            <image wx:if="{{item.cover_image}}" src="{{item.cover_image}}" mode="aspectFill" class="article-cover"/>
+            <view class="article-content">
+                <view class="article-title">{{item.title}}</view>
+                <view class="article-summary" wx:if="{{item.summary}}">{{item.summary}}</view>
+                <view class="article-meta">
+                    <text class="meta-item">{{item.source || '健康资讯'}}</text>
+                    <text class="meta-dot">·</text>
+                    <text class="meta-item">👁 {{item.view_count || 0}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{articles.length === 0}}" class="empty-state">
+        <view class="empty-state-icon">📰</view>
+        <view class="empty-state-title">暂无资讯</view>
+        <view class="empty-state-desc">换个关键词或分类试试</view>
+    </view>
+</view>

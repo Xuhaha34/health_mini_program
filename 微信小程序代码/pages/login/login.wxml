@@ -1,0 +1,51 @@
+<view class="login-container">
+    <view class="login-hero">
+        <view class="hero-circle hero-circle-1"></view>
+        <view class="hero-circle hero-circle-2"></view>
+        <view class="hero-circle hero-circle-3"></view>
+        <view class="login-logo-wrap">
+            <view class="login-logo">🌿</view>
+        </view>
+        <view class="login-title">个人健康管理</view>
+        <view class="login-subtitle">科学管理 · 记录成长 · 拥抱健康</view>
+    </view>
+
+    <view class="login-card">
+        <view class="tab-switch">
+            <view class="tab-item {{mode === 'login' ? 'tab-active' : ''}}" bindtap="switchMode" data-mode="login">登录</view>
+            <view class="tab-item {{mode === 'register' ? 'tab-active' : ''}}" bindtap="switchMode" data-mode="register">注册</view>
+        </view>
+
+        <view class="form-wrap">
+            <view class="field-box">
+                <view class="field-icon">👤</view>
+                <input class="field-input" placeholder="请输入用户名" value="{{form.username}}" data-field="username" bindinput="onInput" />
+            </view>
+
+            <view class="field-box" wx:if="{{mode === 'register'}}">
+                <view class="field-icon">📧</view>
+                <input class="field-input" placeholder="请输入邮箱" value="{{form.email}}" data-field="email" bindinput="onInput" />
+            </view>
+
+            <view class="field-box">
+                <view class="field-icon">🔒</view>
+                <input class="field-input" password="true" placeholder="请输入密码" value="{{form.password}}" data-field="password" bindinput="onInput" />
+            </view>
+
+            <view class="field-box" wx:if="{{mode === 'register'}}">
+                <view class="field-icon">🔑</view>
+                <input class="field-input" password="true" placeholder="请确认密码" value="{{form.confirm_password}}" data-field="confirm_password" bindinput="onInput" />
+            </view>
+        </view>
+
+        <button class="btn-primary btn-submit" bindtap="onSubmit">{{mode === 'login' ? '立即登录' : '立即注册'}}</button>
+
+        <view class="switch-hint" bindtap="switchMode">
+            {{mode === 'login' ? '还没有账号？去注册' : '已有账号？去登录'}}
+        </view>
+    </view>
+
+    <view class="login-footer">
+        <text class="footer-text">© 2024 个人健康管理 · 让生活更美好</text>
+    </view>
+</view>

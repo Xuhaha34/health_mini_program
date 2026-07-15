@@ -1,0 +1,154 @@
+.header-card {
+    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+    border-radius: 32rpx;
+    padding: 32rpx 32rpx;
+    margin-bottom: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.25);
+    color: #ffffff;
+}
+.header-left {
+    flex: 1;
+    overflow: hidden;
+}
+.header-title {
+    font-size: 38rpx;
+    font-weight: 700;
+    margin-bottom: 8rpx;
+    letter-spacing: 1rpx;
+}
+.header-sub {
+    font-size: 24rpx;
+    opacity: 0.85;
+}
+.btn-header-add {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: 2rpx solid rgba(255, 255, 255, 0.5);
+    border-radius: 30rpx;
+    padding: 16rpx 28rpx;
+    font-size: 26rpx;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.btn-header-add::after { border: none; }
+.btn-header-icon {
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-weight: 700;
+}
+
+.record-card {
+    padding: 28rpx 32rpx;
+}
+.record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #F1F5F9;
+}
+.record-date {
+    display: flex;
+    align-items: center;
+}
+.date-icon {
+    font-size: 32rpx;
+    margin-right: 12rpx;
+}
+.date-text {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #1F2937;
+}
+.record-actions {
+    display: flex;
+    align-items: center;
+}
+.action-btn {
+    font-size: 24rpx;
+    color: #6B7280;
+    padding: 8rpx 20rpx;
+    border-radius: 24rpx;
+    background: #F1F5F9;
+    margin-left: 12rpx;
+    font-weight: 500;
+}
+.action-btn.action-delete {
+    background: #FFEBEE;
+    color: #EF4444;
+}
+.record-actions .action-btn:active {
+    opacity: 0.8;
+}
+
+.record-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8rpx;
+}
+.record-item {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 12rpx 8rpx;
+    display: flex;
+    align-items: center;
+}
+.record-item-icon {
+    width: 72rpx;
+    height: 72rpx;
+    background: #F1F5F9;
+    border-radius: 18rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+}
+.record-item-content {
+    flex: 1;
+    min-width: 0;
+}
+.record-item-value {
+    font-size: 32rpx;
+    font-weight: 700;
+    color: #1F2937;
+    line-height: 1.3;
+}
+.record-item-unit {
+    font-size: 22rpx;
+    font-weight: 500;
+    color: #9CA3AF;
+}
+.record-item-label {
+    font-size: 22rpx;
+    color: #9CA3AF;
+    margin-top: 4rpx;
+    font-weight: 500;
+}
+
+.record-remark {
+    background: #F8FAFC;
+    border-radius: 16rpx;
+    padding: 20rpx 24rpx;
+    margin-top: 20rpx;
+    display: flex;
+    align-items: flex-start;
+}
+.remark-icon {
+    font-size: 28rpx;
+    margin-right: 12rpx;
+    flex-shrink: 0;
+}
+.remark-text {
+    font-size: 26rpx;
+    color: #475569;
+    line-height: 1.5;
+    flex: 1;
+}

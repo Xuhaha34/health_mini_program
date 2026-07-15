@@ -1,0 +1,92 @@
+<!-- pages/health_plan/health_plan.wxml -->
+<view class="container">
+
+    <!-- 顶部操作栏 -->
+    <view class="action-bar">
+        <view class="action-title">
+            <text class="action-title-text">健康计划</text>
+            <text class="action-title-sub">共 {{plans.length}} 个计划</text>
+        </view>
+        <button class="btn-add" bindtap="showAddForm">+ 新建</button>
+    </view>
+
+    <!-- 计划列表 -->
+    <view wx:for="{{plans}}" wx:key="id" class="plan-card">
+        <view class="plan-header">
+            <view style="display:flex;align-items:center;flex:1;">
+                <text class="plan-title">{{item.title}}</text>
+                <text class="record-item-badge" style="background:#E3F2FD;color:#1976D2;">{{item.plan_type_display}}</text>
+            </view>
+            <text class="record-item-delete" data-id="{{item.id}}" bindtap="deletePlan">删除</text>
+        </view>
+
+        <view class="plan-meta" wx:if="{{item.target_value}}">
+            <text class="plan-date">🎯 目标：{{item.target_value}}</text>
+        </view>
+        <view class="plan-meta">
+            <text class="plan-date">📅 {{item.start_date}} ~ {{item.end_date}}</text>
+            <text class="plan-target">{{item.status_display}}</text>
+        </view>
+
+        <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.progress}}%;"></view>
+        </view>
+        <view class="progress-info">
+            <text class="progress-text">进度 {{item.progress}}%</text>
+            <button class="checkin-btn" data-id="{{item.id}}" bindtap="doCheckIn">✅ 打卡</button>
+        </view>
+    </view>
+
+    <view wx:if="{{plans.length === 0}}" class="empty-state">
+        <view class="empty-icon">📋</view>
+        <view class="empty-title">暂无健康计划</view>
+        <view class="empty-desc">制定计划，开启健康生活</view>
+    </view>
+
+    <!-- 弹窗 -->
+    <view class="modal" wx:if="{{showForm}}" catchtap="hideForm">
+        <view class="modal-content" catchtap="">
+            <view class="modal-header">
+                <view class="modal-title">创建健康计划</view>
+                <text class="modal-close" bindtap="hideForm">✕</text>
+            </view>
+
+            <view class="modal-form">
+                <view class="form-field">
+                    <text class="form-label">📝 计划标题</text>
+                    <input placeholder="例如：30天减重计划" value="{{form.title}}" data-field="title" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">🏷️ 计划类型</text>
+                    <view class="type-selector">
+                        <text class="type-tag {{form.plan_type === item.value ? 'type-tag-active' : ''}}"
+                              wx:for="{{planTypes}}" wx:key="value"
+                              data-type="{{item.value}}" bindtap="selectPlanType">{{item.label}}</text>
+                    </view>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">🎯 目标值</text>
+                    <input placeholder="例如：减重5kg、跑步100km" value="{{form.target_value}}" data-field="target_value" bindinput="onFormInput" class="form-input"/>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">📅 开始日期</text>
+                    <picker mode="date" value="{{form.start_date}}" bindchange="onStartDateChange">
+                        <view class="picker-box">{{form.start_date}} <text class="picker-arrow">›</text></view>
+                    </picker>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">📅 结束日期</text>
+                    <picker mode="date" value="{{form.end_date}}" bindchange="onEndDateChange">
+                        <view class="picker-box">{{form.end_date}} <text class="picker-arrow">›</text></view>
+                    </picker>
+                </view>
+                <view class="form-field">
+                    <text class="form-label">💭 计划描述</text>
+                    <input placeholder="选填，详细描述你的计划..." value="{{form.description}}" data-field="description" bindinput="onFormInput" class="form-input"/>
+                </view>
+            </view>
+
+            <button class="btn-primary btn-modal" bindtap="savePlan">创建计划</button>
+        </view>
+    </view>
+</view>
