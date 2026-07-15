@@ -2,8 +2,8 @@
 import request from '@/utils/request'
 
 export default {
-    // ==================== 体征数据 ====================
-    // 获取体征数据列表
+    //体征数据 
+  
     getBodyDataList(params) {
         return request({
             url: '/records/body-data/',
@@ -12,7 +12,7 @@ export default {
         })
     },
     
-    // 删除体征数据
+
     deleteBodyData(id) {
         return request({
             url: `/records/body-data/${id}/`,
@@ -20,7 +20,7 @@ export default {
         })
     },
     
-    // 获取体征统计
+
     getBodyDataStats(params) {
         return request({
             url: '/records/body-data/stats/',
@@ -29,8 +29,8 @@ export default {
         })
     },
     
-    // ==================== 饮食记录 ====================
-    // 获取饮食记录列表
+    // 饮食记录
+  
     getDietList(params) {
         return request({
             url: '/records/diet/',
@@ -38,8 +38,7 @@ export default {
             params
         })
     },
-    
-    // 删除饮食记录
+
     deleteDiet(id) {
         return request({
             url: `/records/diet/${id}/`,
@@ -47,7 +46,7 @@ export default {
         })
     },
     
-    // 获取饮食统计
+
     getDietStats(params) {
         return request({
             url: '/records/diet/stats/',
@@ -56,8 +55,8 @@ export default {
         })
     },
     
-    // ==================== 运动记录 ====================
-    // 获取运动记录列表
+    // 运动记录 
+
     getSportList(params) {
         return request({
             url: '/records/sport/',
@@ -66,7 +65,7 @@ export default {
         })
     },
     
-    // 删除运动记录
+
     deleteSport(id) {
         return request({
             url: `/records/sport/${id}/`,
@@ -74,7 +73,7 @@ export default {
         })
     },
     
-    // 获取运动统计
+ 
     getSportStats(params) {
         return request({
             url: '/records/sport/stats/',
@@ -83,7 +82,7 @@ export default {
         })
     },
 
-    // 获取最近活动（Dashboard）
+   
     getRecentActivities(params) {
         return request({
             url: '/records/recent-activities/',
@@ -92,7 +91,7 @@ export default {
         })
     },
 
-    // 获取综合统计（Dashboard）
+   
     getOverallStatistics(params) {
         return request({
             url: '/records/statistics/',
