@@ -2,8 +2,8 @@
 import request from '@/utils/request'
 
 export default {
-    // ==================== 小程序端公开接口 ====================
-    // 获取资讯分类列表
+    // 小程序端公开接口
+
     getCategories() {
         return request({
             url: '/news/categories/',
@@ -11,7 +11,7 @@ export default {
         })
     },
     
-    // 获取资讯列表（已发布）
+
     getList(params) {
         return request({
             url: '/news/',
@@ -20,7 +20,7 @@ export default {
         })
     },
     
-    // 获取资讯详情
+
     getDetail(id) {
         return request({
             url: `/news/${id}/`,
@@ -28,8 +28,8 @@ export default {
         })
     },
     
-    // ==================== 管理后台接口 ====================
-    // 获取所有资讯（含草稿）
+
+
     getManageList(params) {
         return request({
             url: '/news/manage/',
@@ -38,7 +38,7 @@ export default {
         })
     },
     
-    // 创建资讯
+ 
     create(data) {
         return request({
             url: '/news/manage/',
@@ -47,7 +47,7 @@ export default {
         })
     },
     
-    // 更新资讯
+
     update(id, data) {
         return request({
             url: `/news/manage/${id}/`,
@@ -56,7 +56,7 @@ export default {
         })
     },
     
-    // 删除资讯
+
     delete(id) {
         return request({
             url: `/news/manage/${id}/`,
