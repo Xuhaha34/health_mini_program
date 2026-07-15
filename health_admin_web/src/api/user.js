@@ -2,7 +2,7 @@
 import request from '@/utils/request'
 
 export default {
-    // 获取用户列表
+   
     getList(params) {
         return request({
             url: '/users/',
@@ -11,7 +11,7 @@ export default {
         })
     },
     
-    // 创建用户
+
     create(data) {
         return request({
             url: '/users/',
@@ -20,7 +20,7 @@ export default {
         })
     },
     
-    // 获取用户详情
+   
     getDetail(id) {
         return request({
             url: `/users/${id}/`,
@@ -28,7 +28,7 @@ export default {
         })
     },
     
-    // 更新用户信息
+  
     update(id, data) {
         return request({
             url: `/users/${id}/`,
@@ -37,7 +37,7 @@ export default {
         })
     },
     
-    // 删除用户
+  
     delete(id) {
         return request({
             url: `/users/${id}/`,
@@ -45,7 +45,7 @@ export default {
         })
     },
     
-    // 获取用户统计
+ 
     getStats() {
         return request({
             url: '/users/stats/',
