@@ -70,7 +70,7 @@ const router = createRouter({
     routes
 })
 
-// 路由守卫
+
 router.beforeEach((to, from, next) => {
     const userStore = useUserStore()
     const token = userStore.token
